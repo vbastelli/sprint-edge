@@ -1,12 +1,13 @@
-Aqui está tudo em um formato de fácil cópia e cola para o seu arquivo `README.md` no GitHub:
+Aqui está uma versão aprimorada do seu README, com uma estrutura mais clara e detalhada:
 
+---
 
 # **IoT Data Collection and Edge Computing using ESP32 and FIWARE**
 
 ## **Project Description**
-Este projeto faz parte do Sprint 3 de desenvolvimento da arquitetura para uma aplicação IoT. Ele demonstra como a arquitetura IoT pode ser configurada para coletar dados de dispositivos conectados (como sensores de temperatura e luminosidade), processá-los utilizando o ESP32 e transmitir esses dados para uma plataforma de backend, com visualização em dashboards. 
+Este projeto faz parte do Sprint 3, focado no desenvolvimento de uma arquitetura para uma aplicação IoT. Ele demonstra como configurar uma arquitetura IoT para coletar dados de dispositivos conectados, como sensores de temperatura e luminosidade, processar esses dados utilizando o ESP32 e transmiti-los para uma plataforma de backend com visualização em dashboards.
 
-O projeto utiliza a infraestrutura de Edge Computing, permitindo o processamento de dados no próprio dispositivo (ESP32) e, posteriormente, transmitindo-os para a nuvem, garantindo uma solução eficiente e escalável. O **FIWARE** foi usado para gerenciar e visualizar os dados, e a aplicação foi simulada no **Wokwi**.
+A infraestrutura de **Edge Computing** é utilizada para o processamento de dados no dispositivo (ESP32) e posterior transmissão para a nuvem, oferecendo uma solução eficiente e escalável. A plataforma **FIWARE** foi empregada para gerenciamento e visualização dos dados, enquanto o hardware e código foram simulados no **Wokwi**.
 
 ## **Table of Contents**
 1. [Motivação](#motivação)
@@ -17,60 +18,78 @@ O projeto utiliza a infraestrutura de Edge Computing, permitindo o processamento
 6. [Licença](#licença)
 
 ## **Motivação**
-Este projeto foi desenvolvido para demonstrar uma aplicação prática da Internet das Coisas (IoT) em um ambiente de Edge Computing. A ideia é mostrar como dispositivos IoT podem coletar dados, processá-los localmente e enviar informações para a nuvem utilizando o **FIWARE**. A motivação central é explorar o uso de uma plataforma IoT que seja eficiente e escalável.
+Este projeto visa explorar a aplicação prática da **Internet das Coisas (IoT)** em um ambiente de **Edge Computing**, demonstrando como dispositivos IoT podem coletar e processar dados localmente antes de enviá-los para a nuvem. A motivação é desenvolver uma solução eficiente, escalável e capaz de gerenciar grandes volumes de dados com a plataforma **FIWARE**.
 
 ## **Tecnologias Utilizadas**
-- **ESP32**: Microcontrolador usado para coletar dados dos sensores.
+- **ESP32**: Microcontrolador responsável por coletar dados dos sensores.
 - **DHT22**: Sensor de temperatura e umidade.
-- **Sensor de Luminosidade**: Medição da intensidade de luz ambiente.
-- **Wokwi**: Simulação de hardware para desenvolvimento de código de IoT.
-- **Postman**: Ferramenta para testar e visualizar as requisições de dados enviadas pelo ESP32.
-- **FIWARE**: Plataforma open-source para gerenciar dados de IoT.
-- **Azure**: Infraestrutura de nuvem usada para hospedar a máquina virtual.
+- **Sensor de Luminosidade**: Responsável pela medição da intensidade da luz ambiente.
+- **Wokwi**: Simulador de hardware para desenvolvimento de código IoT.
+- **Postman**: Ferramenta para testar e monitorar as requisições de dados.
+- **FIWARE**: Plataforma open-source para gerenciamento de dados IoT.
+- **Azure**: Infraestrutura de nuvem utilizada para hospedar a máquina virtual (VM).
 - **Docker**: Ferramenta para containerização, usada na VM para rodar o FIWARE.
-- **Visual Studio Code**: Ambiente de desenvolvimento integrado (IDE).
 
 ## **Instalação e Configuração**
 
 ### **1. Configurar a Máquina Virtual no Azure**
-- Criar uma máquina virtual no Azure.
-- Instalar o Docker:
-  ```bash
-  sudo apt-get update
-  sudo apt-get install docker.io
-  ```
-- Clonar o repositório **Fiware Descomplicado**:
-  ```bash
-  git clone https://github.com/fiware/fiware-descomplicado.git
-  ```
+1. Crie uma máquina virtual (VM) no Azure com o sistema operacional Ubuntu.
+2. Instale o **Docker** para rodar o FIWARE:
+
+### Comandos para instalar o Docker no Ubuntu:
+
+```bash
+# Atualizar pacotes existentes
+sudo apt-get update
+
+# Instalar pacotes necessários
+sudo apt-get install apt-transport-https ca-certificates curl software-properties-common
+
+# Adicionar chave GPG oficial do Docker
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+
+# Adicionar o repositório do Docker
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+# Atualizar pacotes novamente e instalar Docker
+sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io
+
+# Verificar se o Docker está funcionando
+sudo systemctl status docker
+
+# Adicionar seu usuário ao grupo Docker para evitar uso do 'sudo' (opcional)
+sudo usermod -aG docker $USER
+```
+
+3. Teste a instalação do Docker com:
+```bash
+docker run hello-world
+```
+
+4. Clone o repositório **Fiware Descomplicado**:
+```bash
+git clone https://github.com/fiware/fiware-descomplicado.git
+```
 
 ### **2. Executar o Simulador Wokwi**
-- No **Wokwi**, utilize o ESP32 conectado ao sensor **DHT22** e ao sensor de luminosidade.
-- O código do ESP32 pode ser encontrado na pasta `/src`. Ele coleta dados dos sensores e os envia para o **Postman**.
+- No **Wokwi**, simule o ESP32 conectado ao sensor **DHT22** e ao sensor de luminosidade.
+- O código para o ESP32 está na pasta `/src`. Ele coleta dados dos sensores e os envia para o **Postman**.
 
 ### **3. Testar a Comunicação com o Postman**
-- Abra o **Postman** e configure a Collection para visualizar os dados recebidos do ESP32.
-- Verifique as leituras dos sensores sendo enviadas em tempo real.
+- Abra o **Postman** e configure uma Collection para visualizar as requisições de dados do ESP32.
+- Verifique se os dados dos sensores estão sendo recebidos em tempo real.
 
 ## **Como Usar**
 
-### **1. Executar a Plataforma**
-- Após configurar a máquina virtual no Azure e instalar o Docker, rode os containers do FIWARE:
-  ```bash
-  docker-compose up
-  ```
+### **1. Executar a Plataforma FIWARE**
+- Após configurar a VM no Azure e instalar o Docker, rode os containers do FIWARE usando o comando:
+```bash
+docker-compose up
+```
 
-### **2. Executar a Simulação no Wokwi**
-- Acesse a plataforma Wokwi e faça a simulação utilizando o código presente no projeto. Certifique-se de que a comunicação com o Postman está funcionando corretamente.
-  
-### **3. Visualização dos Dados**
-- Utilize o Postman para monitorar os dados recebidos.
-- Opcionalmente, crie dashboards personalizados para exibir as leituras de temperatura e luminosidade de forma visual.
+### **2. Simulação no Wokwi**
+- Acesse o **Wokwi** e simule o funcionamento do ESP32 com o código fornecido no projeto. Verifique a comunicação correta com o **Postman** para o recebimento dos dados.
 
-## **Contribuições**
-Contribuições são bem-vindas! Se você deseja colaborar com melhorias neste projeto, siga os passos abaixo:
-1. Faça um fork do repositório.
-2. Crie uma branch com a nova feature (`git checkout -b feature/nova-feature`).
-3. Faça o commit das alterações (`git commit -m 'Add nova feature'`).
-4. Envie o push para a branch (`git push origin feature/nova-feature`).
-5. Abra um Pull Request.
+### **3. Visualizar os Dados**
+- Monitore os dados no **Postman** e crie dashboards para exibir visualmente as leituras de temperatura e luminosidade.
