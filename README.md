@@ -32,13 +32,7 @@ Este projeto foi desenvolvido para demonstrar uma aplicação prática da Intern
 
 ## **Instalação e Configuração**
 
-### **1. Clonar o Repositório**
-```bash
-git clone <URL do repositório>
-cd <nome do projeto>
-```
-
-### **2. Configurar a Máquina Virtual no Azure**
+### **1. Configurar a Máquina Virtual no Azure**
 - Criar uma máquina virtual no Azure.
 - Instalar o Docker:
   ```bash
@@ -50,11 +44,11 @@ cd <nome do projeto>
   git clone https://github.com/fiware/fiware-descomplicado.git
   ```
 
-### **3. Executar o Simulador Wokwi**
+### **2. Executar o Simulador Wokwi**
 - No **Wokwi**, utilize o ESP32 conectado ao sensor **DHT22** e ao sensor de luminosidade.
 - O código do ESP32 pode ser encontrado na pasta `/src`. Ele coleta dados dos sensores e os envia para o **Postman**.
 
-### **4. Testar a Comunicação com o Postman**
+### **3. Testar a Comunicação com o Postman**
 - Abra o **Postman** e configure a Collection para visualizar os dados recebidos do ESP32.
 - Verifique as leituras dos sensores sendo enviadas em tempo real.
 
