@@ -1,3 +1,6 @@
+Aqui está tudo em um formato de fácil cópia e cola para o seu arquivo `README.md` no GitHub:
+
+
 # **IoT Data Collection and Edge Computing using ESP32 and FIWARE**
 
 ## **Project Description**
@@ -33,3 +36,47 @@ Este projeto foi desenvolvido para demonstrar uma aplicação prática da Intern
 ```bash
 git clone <URL do repositório>
 cd <nome do projeto>
+```
+
+### **2. Configurar a Máquina Virtual no Azure**
+- Criar uma máquina virtual no Azure.
+- Instalar o Docker:
+  ```bash
+  sudo apt-get update
+  sudo apt-get install docker.io
+  ```
+- Clonar o repositório **Fiware Descomplicado**:
+  ```bash
+  git clone https://github.com/fiware/fiware-descomplicado.git
+  ```
+
+### **3. Executar o Simulador Wokwi**
+- No **Wokwi**, utilize o ESP32 conectado ao sensor **DHT22** e ao sensor de luminosidade.
+- O código do ESP32 pode ser encontrado na pasta `/src`. Ele coleta dados dos sensores e os envia para o **Postman**.
+
+### **4. Testar a Comunicação com o Postman**
+- Abra o **Postman** e configure a Collection para visualizar os dados recebidos do ESP32.
+- Verifique as leituras dos sensores sendo enviadas em tempo real.
+
+## **Como Usar**
+
+### **1. Executar a Plataforma**
+- Após configurar a máquina virtual no Azure e instalar o Docker, rode os containers do FIWARE:
+  ```bash
+  docker-compose up
+  ```
+
+### **2. Executar a Simulação no Wokwi**
+- Acesse a plataforma Wokwi e faça a simulação utilizando o código presente no projeto. Certifique-se de que a comunicação com o Postman está funcionando corretamente.
+  
+### **3. Visualização dos Dados**
+- Utilize o Postman para monitorar os dados recebidos.
+- Opcionalmente, crie dashboards personalizados para exibir as leituras de temperatura e luminosidade de forma visual.
+
+## **Contribuições**
+Contribuições são bem-vindas! Se você deseja colaborar com melhorias neste projeto, siga os passos abaixo:
+1. Faça um fork do repositório.
+2. Crie uma branch com a nova feature (`git checkout -b feature/nova-feature`).
+3. Faça o commit das alterações (`git commit -m 'Add nova feature'`).
+4. Envie o push para a branch (`git push origin feature/nova-feature`).
+5. Abra um Pull Request.
