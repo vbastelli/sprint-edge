@@ -1,7 +1,3 @@
-Aqui está uma versão aprimorada do seu README, com uma estrutura mais clara e detalhada:
-
----
-
 # **IoT Data Collection and Edge Computing using ESP32 and FIWARE**
 
 ## **Project Description**
@@ -16,6 +12,7 @@ A infraestrutura de **Edge Computing** é utilizada para o processamento de dado
 4. [Como Usar](#como-usar)
 5. [Contribuições](#contribuições)
 6. [Licença](#licença)
+7. [Visualização de Dados com Dash](#visualização-de-dados-com-dash)
 
 ## **Motivação**
 Este projeto visa explorar a aplicação prática da **Internet das Coisas (IoT)** em um ambiente de **Edge Computing**, demonstrando como dispositivos IoT podem coletar e processar dados localmente antes de enviá-los para a nuvem. A motivação é desenvolver uma solução eficiente, escalável e capaz de gerenciar grandes volumes de dados com a plataforma **FIWARE**.
@@ -29,6 +26,7 @@ Este projeto visa explorar a aplicação prática da **Internet das Coisas (IoT)
 - **FIWARE**: Plataforma open-source para gerenciamento de dados IoT.
 - **Azure**: Infraestrutura de nuvem utilizada para hospedar a máquina virtual (VM).
 - **Docker**: Ferramenta para containerização, usada na VM para rodar o FIWARE.
+- **Dash**: Framework para construir aplicações web interativas em Python.
 
 ## **Instalação e Configuração**
 
@@ -93,3 +91,14 @@ docker-compose up
 
 ### **3. Visualizar os Dados**
 - Monitore os dados no **Postman** e crie dashboards para exibir visualmente as leituras de temperatura e luminosidade.
+
+## **Visualização de Dados com Dash**
+O aplicativo Dash permite visualizar os dados de luminosidade coletados em tempo real. O código para a aplicação Dash é o seguinte:
+
+ **arquivo:**
+- dashboard.py
+
+### **Explicação do Código:**
+- O aplicativo Dash coleta dados de luminosidade da API e atualiza o gráfico a cada 10 segundos.
+- Os dados são armazenados em um `dcc.Store`, que permite manter o estado da aplicação entre atualizações.
+- Os timestamps são convertidos para o horário de Lisboa para melhor visualização.
